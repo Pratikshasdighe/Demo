@@ -14,7 +14,8 @@ import {
   Icon,
   Pressable,
 } from "native-base";
-import { Entypo } from "@expo/vector-icons";
+
+import { AntDesign } from "@expo/vector-icons";
 
 import { Text } from "native-base";
 import { View } from "react-native";
@@ -25,7 +26,7 @@ export default function Model(props: any) {
   console.log(props.data);
   const data = props.data;
   const [modalVisible, setModalVisible] = React.useState(false);
-  const [selected, setSelected] = React.useState(false);
+  const [selected, setSelected] = useState(0);
   // const [value, setValue] = React.useState([]);
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -45,26 +46,22 @@ export default function Model(props: any) {
           <Modal.Header>Month Calculation </Modal.Header>
           <Modal.Body>
             {data.map((data: any) => {
-              const [selected, setSelected] = useState(false);
-              const [value, setValue] = React.useState("");
               return (
                 <Pressable
                   key={data.id}
                   onPress={(nextValue: any) => {
-                    setSelected(!selected);
-                    setValue(nextValue);
+                    setSelected(data.id);
                   }}
                 >
                   {({ isHovered, isPressed }) => {
+                    const status = selected === data.id;
                     return (
                       <HStack
                         borderWidth="1"
                         // borderColor="#e7eff5"
                         mt="2"
                         key={data.heading}
-                        borderColor={
-                          isPressed || selected ? "#7098d5" : "#f1f0f1"
-                        }
+                        borderColor={status ? "#7098d5" : "#f1f0f1"}
                         // bg={isPressed ? "cyan.500" : null}
 
                         // _icon={isPressed ? "blue" : "grey"}
@@ -75,13 +72,20 @@ export default function Model(props: any) {
                           <Text>{data.content}</Text>
                         </Box>
                         <Box p="5">
-                          <CheckIcon
-                            size="10"
-                            // color="#e7eff5"
-                            color={
-                              isPressed || selected ? "#7098d5" : "#e7eff5"
-                            }
-                          />
+                          <Center flex={1} px="3">
+                            {/* <CheckIcon
+                              size="5"
+                              // color="#e7eff5"
+                              color={status ? "#7098d5" : "#e7eff5"}
+                            />  */}
+                            {status ? (
+                              <AntDesign
+                                name="checkcircle"
+                                size={20}
+                                color="#7098d5"
+                              />
+                            ) : null}
+                          </Center>
                           {/* <IconButton
                       onPress={() => alert("Add payment")}
                       icon={

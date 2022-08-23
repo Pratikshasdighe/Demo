@@ -124,13 +124,3 @@ export const Example = () => {
     </VStack>
   );
 };
-
-// export default () => {
-//   return (
-//     <NativeBaseProvider>
-//       <Center flex={1} px="3">
-//         <Example />
-//       </Center>
-//     </NativeBaseProvider>
-//   );
-// };

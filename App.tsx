@@ -5,6 +5,8 @@ import Model from "./src/component/modal";
 import dummyData from "./src/dummyData/modal";
 import { Example } from "./src/component/dropDown";
 import ModelInput from "./src/component/modalInput";
+import ModelMultipleInput from "./src/component/modalMultipleInput";
+// import DragDrop from "./src/component/dragDrop";
 
 export default () => {
   return (
@@ -17,6 +19,10 @@ export default () => {
         <Model data={dummyData} />
         <br />
         <ModelInput />
+        <br />
+        <ModelMultipleInput />
+        <br />
+        {/* <DragDrop /> */}
       </Center>
     </NativeBaseProvider>
   );

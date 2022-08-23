@@ -41,7 +41,7 @@ export default function ModelInput() {
               <Input />
             </FormControl>
             <Text>
-              By contuning you agree to
+              By contuning you agree to{" "}
               <Link
                 _text={{
                   _light: {
